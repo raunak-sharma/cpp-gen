@@ -18,6 +18,11 @@ const questions = [
     },
     {
         type : 'input',
+        name : 'relDir',
+        message : `\nEnter the relative path of the parent folder (where you want the code to be)\nRight now, you are at "${__dirname}" :> `
+    },
+    {
+        type : 'input',
         name : 'quesNo',
         message : '\nHow many questions ? 👨‍💻 :> '
     }
@@ -31,7 +36,7 @@ inquirer.prompt(questions)
 .then(answers => {
 
 
-    currDir += answers['dir'];
+    currDir = answers['relDir'] + answers['dir'];
     noOfQues = answers['quesNo'];
 
     console.log(`\n\nSearching for similar contests 🔎....\n`);
@@ -42,7 +47,7 @@ inquirer.prompt(questions)
         if(err) {
             should = false;
         }
-    
+
         else {
             console.log(`Great ! No contests exists. ${currDir} folder created 🤙🍕\n`);
         }
@@ -56,7 +61,7 @@ inquirer.prompt(questions)
                 if(err) {
                     console.log(`\nSorry, the errors are : ${err.message} 🤒\n`);
                 }
-    
+
                 else {
                     console.log(`File ${i}.cpp created 🔥`);
                     if(i == noOfQues) {

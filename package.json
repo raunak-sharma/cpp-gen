@@ -4,13 +4,14 @@
   "description": "This is a script to help competitive programmers generate c++ templates for a specific contest.",
   "main": "index.js",
   "scripts": {
-    "still" : "npm run create --silent",
+    "still": "npm run create --silent",
     "create": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "raunak-sharma",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.4.1"
+    "inquirer": "^6.4.1",
+    "npm": "^6.9.0"
   }
 }
