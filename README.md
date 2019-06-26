@@ -1,1 +1,6 @@
 This is a C++ code generator
+
+THE TOOL DOES THE JOB, BUT IS ASYNCHRONOUS.
+THIS WILL HAVE TO BE CHANGED TO A SYNCHRONOUS VERSION.
+
+Watch the space for more.

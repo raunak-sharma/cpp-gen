@@ -4,6 +4,7 @@
   "description": "This is a script to help competitive programmers generate c++ templates for a specific contest.",
   "main": "index.js",
   "scripts": {
+    "still" : "npm run create --silent",
     "create": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
