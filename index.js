@@ -19,16 +19,21 @@ const questions = [
     {
         type : 'input',
         name : 'relDir',
-        message : `\nEnter the relative path of the parent folder (where you want the code to be)\nRight now, you are at "${__dirname}" :> `
+        message : `\nEnter the relative path where you want the code base.\nRight now, you are at "${__dirname}" :> `
     },
     {
         type : 'input',
         name : 'quesNo',
-        message : '\nHow many questions ? 👨‍💻 :> '
+        message : '\nHow many questions does the contest have ?\n(If you don\'t know yet, type a tentative number) 👨‍💻 :> '
+    },
+    {
+        type : 'input',
+        name : 'templateType',
+        message : '\nWhat kind‍ of template would you like Advanced / Begginer / Clean [A / B / C] ?💻 :> '
     }
 ];
 
-let currDir = "", noOfQues;
+let currDir = "", noOfQues, inp;
 
 //process.exit(1);
 
@@ -38,6 +43,9 @@ inquirer.prompt(questions)
 
     currDir = answers['relDir'] + answers['dir'];
     noOfQues = answers['quesNo'];
+    inp = answers['templateType'].toUpperCase();
+
+    console.log(`input for template type = ${inp}\n`);
 
     console.log(`\n\nSearching for similar contests 🔎....\n`);
 
@@ -57,7 +65,19 @@ inquirer.prompt(questions)
     if(should) {
         console.log(`\nCreating C++ files with the templates ✍🏼....\n`);
         for(let i = 1; i <= noOfQues; i++) {
-            fs.appendFile( currDir + '/' + i + '.cpp', snip.snip, function (err, res) {
+            let temp;
+
+            if(inp[0] == 'A') {
+                temp = snip.snipAdv;
+            }
+            else if(inp[0] == 'B') {
+                temp = snip.snipBeg;
+            }
+            else {
+                temp = `\n\n/* created with cpp-gen ⭐️ ( https://github.com/raunak-sharma/cpp-gen ) */`
+            }
+
+            fs.appendFile( currDir + '/' + i + '.cpp', temp, function (err, res) {
                 if(err) {
                     console.log(`\nSorry, the errors are : ${err.message} 🤒\n`);
                 }
